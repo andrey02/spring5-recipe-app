@@ -17,7 +17,10 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //difficulty Difficulty;
+
+    @Enumerated(value = EnumType.STRING) //persist as string and not as number
+    private Difficulty difficulty;
+
     @Lob
     private Byte[] image;
 
@@ -26,6 +29,12 @@ public class Recipe {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
+
+    @ManyToMany
+    @JoinTable(name="recipe_category",
+        joinColumns = @JoinColumn(name="recipe_id"),
+        inverseJoinColumns = @JoinColumn(name="category_id"))
+    private Set<Category> categories;
 
     public Set<Ingredient> getIngredients() {
         return ingredients;
