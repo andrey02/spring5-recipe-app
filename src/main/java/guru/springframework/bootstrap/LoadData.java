@@ -8,6 +8,7 @@ import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
 import guru.springframework.utils.Image;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@Slf4j
 @Component
 public class LoadData implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -104,6 +106,7 @@ public class LoadData implements ApplicationListener<ContextRefreshedEvent> {
 
         //save Recipe to database
         recipeRepository.save(recipe);
+        log.debug("saved recipe: " + recipe.getName());
 
 
         //INPUT RECIPES 2
@@ -191,6 +194,7 @@ public class LoadData implements ApplicationListener<ContextRefreshedEvent> {
         //save recipe2 to database
         recipeRepository.save(recipe2);
 
+        log.debug("saved recipe: " + recipe2.getName());
         System.out.println("Data loaded ...");
     }
 
