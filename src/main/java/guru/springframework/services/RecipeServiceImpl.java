@@ -5,6 +5,7 @@ import guru.springframework.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -22,5 +23,16 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
         return recipes;
 
+    }
+
+    @Override
+    public Recipe findById(long anyLong) {
+
+        Optional<Recipe> byId = recipeRepository.findById(anyLong);
+
+        if(!byId.isPresent())
+            throw new RuntimeException("Não existe receita com esse ID");
+
+        return byId.get();
     }
 }
