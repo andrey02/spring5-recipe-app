@@ -5,7 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface CategoryRepository extends CrudRepository<Category,Long> { //don't need to specify @Component, spring already makes a Bean cause of CrudRepository.
+/**
+ * Created by jt on 6/13/17.
+ */
+public interface CategoryRepository extends CrudRepository<Category, Long> {
 
-    Optional<Category> findByDescription(String description); //return one instance
+    Optional<Category> findByDescription(String description);
 }
