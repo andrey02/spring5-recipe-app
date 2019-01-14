@@ -48,14 +48,9 @@ public class IngredientController {
         return "recipe/ingredient/show";
     }
 
-<<<<<<< HEAD
-    @GetMapping
-    @RequestMapping("recipe/{recipeId}/ingredient/new")
-    public String newIngredient(@PathVariable String recipeId, Model model){
-=======
     @GetMapping("recipe/{recipeId}/ingredient/new")
     public String newRecipe(@PathVariable String recipeId, Model model){
->>>>>>> display-image-from-db
+
 
         //make sure we have a good id value
         RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
